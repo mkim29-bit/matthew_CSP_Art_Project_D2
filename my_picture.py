@@ -19,14 +19,19 @@ def draw_picture(width, height):
     
     # call fill sky
     sg.set_fill_color("#030bfc")
+    sg.set_outline_color("#030bfc")
     sg.fill_rectangle(0,0,600,210)
     sg.set_fill_color("#0345fc")
+    sg.set_outline_color("#0345fc")
     sg.fill_rectangle(0,50,600,200)
     sg.set_fill_color("#036ffc")
+    sg.set_outline_color("#036ffc")
     sg.fill_rectangle(0,80,600,190)
     sg.set_fill_color("#038cfc")
+    sg.set_outline_color("#038cfc")
     sg.fill_rectangle(0,100,600,180)
     sg.set_fill_color("#03b5fc")
+    sg.set_outline_color("#03b5fc")
     sg.fill_rectangle(0,120,600,170)
     #draw clouds
     sg.set_fill_color("white")
