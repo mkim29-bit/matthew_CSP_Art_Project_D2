@@ -257,16 +257,14 @@ def draw_beach_background(width, height, sky_color, ocean_color, beach_color):
 
 
 def draw_horizon_sun(width, height, sun_color):
-    """Draws the sun sitting right on the horizon line as its own separate layer."""
-    horizon_y = height * (3/5)
+    """Draws the sun layer with its flat base set exactly at y = 120."""
+    sun_y = 291  # Explicitly sets the Y-axis position to 120
     sun_radius = 80
     sun_x = width / 2
     
-    _canvas.create_arc(sun_x - sun_radius, horizon_y - sun_radius, 
-                       sun_x + sun_radius, horizon_y + sun_radius, 
+    _canvas.create_arc(sun_x - sun_radius, sun_y - sun_radius, 
+                       sun_x + sun_radius, sun_y + sun_radius, 
                        start=0, extent=180, fill=sun_color, outline="")
-
-
 
 def draw_volleyball(center_x, center_y, radius, ball_color="white"):
     """
@@ -296,5 +294,6 @@ def draw_volleyball(center_x, center_y, radius, ball_color="white"):
     _canvas.create_arc(center_x - radius, center_y - radius * 0.5, 
                       center_x + radius, center_y + radius * 1.5, 
                       start=0, extent=180, style="arc", outline=_outline_color, width=_line_thickness)
+
 
 
