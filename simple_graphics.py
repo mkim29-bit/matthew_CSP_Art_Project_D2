@@ -229,63 +229,33 @@ def draw_palm_tree(x, y, height, leaves_color="green"):
     _canvas.create_oval(x - coco_radius // 2, top_y + coco_radius * 0.4, x + coco_radius // 2, top_y + coco_radius * 2.0, fill="#4A3329", outline=_outline_color, width=_line_thickness)
 
 
-def draw_beach_scene(width, height, sky_color, ocean_color, beach_color):
-    """Draws a beach scene with a diagonal wavy shoreline that opens wider at the bottom."""
+def draw_beach_scene(width, height, sky_color, ocean_color, beach_color, sun_color):
+    """Draws a beach scene with a diagonal wavy shoreline and a sun on the horizon."""
     horizon_y = height * (3/5)
-    _canvas.create_rectangle(0, 0, width, horizon_y, fill=sky_color, outline="")
+
+    
+    # 1. Draw the Sun (Changed radius from 50 to 80 to make it bigger!)
+    sun_radius = 80
+    sun_x = width / 2
+    _canvas.create_arc(sun_x - sun_radius, horizon_y - sun_radius, 
+                       sun_x + sun_radius, horizon_y + sun_radius, 
+                       start=0, extent=180, fill=sun_color, outline="")
+    
+    # 2. Draw the Ocean
     _canvas.create_rectangle(0, horizon_y, width, height, fill=ocean_color, outline="")
     
+    # 3. Calculate points for the Beach polygon
     beach_points = [width, height, width, horizon_y]
     steps = 30
     y_step = (height - horizon_y) / steps
     
     for i in range(steps + 1):
         current_y = horizon_y + (i * y_step)
-        
-        # Calculate how far down the shore we are (0.0 at horizon, 1.0 at bottom)
         progress = i / steps
-        
-        # This moves the line diagonally from 0.5 (middle) at the top to 0.25 (left) at the bottom
         diagonal_baseline = width * (0.5 - (progress * 0.25))
-        
-        # Add the wavy curves on top of the diagonal line
         current_x = diagonal_baseline + math.sin(i * 0.8) * 20
         
         beach_points.append(current_x)
         beach_points.append(current_y)
         
     _canvas.create_polygon(beach_points, fill=beach_color, outline="")
-
-
-
-def draw_volleyball(center_x, center_y, radius, ball_color="white"):
-    """
-    Draws a detailed volleyball with curved panel lines.
-    
-    AI Attribution:
-    Generated using Gemini.
-    Student Prompt: "here is our current drawing. can you generate a code for creating a volleyball instad of volleyball court"
-    """
-    # 1. Draw the main solid circle for the ball body
-    _canvas.create_oval(center_x - radius, center_y - radius, 
-                        center_x + radius, center_y + radius, 
-                        fill=ball_color, outline=_outline_color, width=_line_thickness)
-    
-    # 2. Draw curved internal panels using arcs to give it a realistic volleyball look
-    # Left vertical seam curve
-    _canvas.create_arc(center_x - radius * 1.5, center_y - radius, 
-                      center_x + radius * 0.5, center_y + radius, 
-                      start=270, extent=180, style="arc", outline=_outline_color, width=_line_thickness)
-                      
-    # Right vertical seam curve
-    _canvas.create_arc(center_x - radius * 0.5, center_y - radius, 
-                      center_x + radius * 1.5, center_y + radius, 
-                      start=90, extent=180, style="arc", outline=_outline_color, width=_line_thickness)
-                      
-    # Horizontal center swooping seam curve
-    _canvas.create_arc(center_x - radius, center_y - radius * 0.5, 
-                      center_x + radius, center_y + radius * 1.5, 
-                      start=0, extent=180, style="arc", outline=_outline_color, width=_line_thickness)
-
-
-
