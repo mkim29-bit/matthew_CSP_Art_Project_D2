@@ -28,7 +28,26 @@ def draw_picture(width, height):
     sg.fill_rectangle(0,100,600,180)
     sg.set_fill_color("#03b5fc")
     sg.fill_rectangle(0,120,600,170)
-    
+    #draw clouds
+    sg.set_fill_color("white")
+    sg.set_outline_color("white")
+    sg.fill_circle(50,80,25)
+    sg.fill_circle(90,60,25)
+    sg.fill_circle(120,70,25)
+    sg.fill_circle(170,90,25)
+    sg.fill_circle(140,95,25)
+    sg.fill_circle(100,95,25)
+    sg.fill_circle(150,80,25)
+    sg.fill_circle(80,90,30)
+    sg.fill_circle(500,110,30)
+    sg.fill_circle(470,125,25)
+    sg.fill_circle(550,100,25)
+    sg.fill_circle(600,110,25)
+    sg.fill_circle(530,90,15)
+    sg.fill_circle(570,100,15)
+    sg.fill_circle(550,120,25)
+    sg.fill_circle(520,125,25)
+    sg.fill_circle(565,125,25)
 
 
     sg.set_fill_color("#8B4513")
