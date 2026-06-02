@@ -38,6 +38,12 @@ def draw_picture(width, height):
     sg.set_fill_color("#8B4513")
     sg.set_line_thickness(3)
     sg.draw_palm_tree(500, 300, 100, "#228B22")
+   
+    # Draw a volleyball on the sand
+    sg.set_outline_color("black")
+    sg.set_line_thickness(2)
+    sg.draw_volleyball(380, 320, 20, "white") # (x, y, radius, color)
+    
     
 
 if __name__ == "__main__":
