@@ -29,7 +29,8 @@ def draw_picture(width, height):
     sg.set_fill_color("#03b5fc")
     sg.fill_rectangle(0,120,600,170)
     
-
+    # 2. Middle Layer (The Sun)
+    sg.draw_horizon_sun(width, height, "#f75019")
 
     sg.set_fill_color("#8B4513")
     sg.set_line_thickness(3)
