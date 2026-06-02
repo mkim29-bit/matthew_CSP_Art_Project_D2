@@ -229,17 +229,12 @@ def draw_palm_tree(x, y, height, leaves_color="green"):
     _canvas.create_oval(x - coco_radius // 2, top_y + coco_radius * 0.4, x + coco_radius // 2, top_y + coco_radius * 2.0, fill="#4A3329", outline=_outline_color, width=_line_thickness)
 
 
-def draw_beach_scene(width, height, sky_color, ocean_color, beach_color, sun_color):
-    """Draws a beach scene with a diagonal wavy shoreline and a sun on the horizon."""
+def draw_beach_background(width, height, sky_color, ocean_color, beach_color):
+    """Draws just the sky, ocean, and diagonal beach layer."""
     horizon_y = height * (3/5)
-
     
-    # 1. Draw the Sun (Changed radius from 50 to 80 to make it bigger!)
-    sun_radius = 80
-    sun_x = width / 2
-    _canvas.create_arc(sun_x - sun_radius, horizon_y - sun_radius, 
-                       sun_x + sun_radius, horizon_y + sun_radius, 
-                       start=0, extent=180, fill=sun_color, outline="")
+    # 1. Draw the Sky
+    _canvas.create_rectangle(0, 0, width, horizon_y, fill=sky_color, outline="")
     
     # 2. Draw the Ocean
     _canvas.create_rectangle(0, horizon_y, width, height, fill=ocean_color, outline="")
@@ -259,6 +254,17 @@ def draw_beach_scene(width, height, sky_color, ocean_color, beach_color, sun_col
         beach_points.append(current_y)
         
     _canvas.create_polygon(beach_points, fill=beach_color, outline="")
+
+
+def draw_horizon_sun(width, height, sun_color):
+    """Draws the sun sitting right on the horizon line as its own separate layer."""
+    horizon_y = height * (3/5)
+    sun_radius = 80
+    sun_x = width / 2
+    
+    _canvas.create_arc(sun_x - sun_radius, horizon_y - sun_radius, 
+                       sun_x + sun_radius, horizon_y + sun_radius, 
+                       start=0, extent=180, fill=sun_color, outline="")
 
 
 
