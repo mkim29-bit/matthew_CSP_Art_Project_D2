@@ -255,3 +255,37 @@ def draw_beach_scene(width, height, sky_color, ocean_color, beach_color):
         beach_points.append(current_y)
         
     _canvas.create_polygon(beach_points, fill=beach_color, outline="")
+
+
+
+def draw_volleyball(center_x, center_y, radius, ball_color="white"):
+    """
+    Draws a detailed volleyball with curved panel lines.
+    
+    AI Attribution:
+    Generated using Gemini.
+    Student Prompt: "here is our current drawing. can you generate a code for creating a volleyball instad of volleyball court"
+    """
+    # 1. Draw the main solid circle for the ball body
+    _canvas.create_oval(center_x - radius, center_y - radius, 
+                        center_x + radius, center_y + radius, 
+                        fill=ball_color, outline=_outline_color, width=_line_thickness)
+    
+    # 2. Draw curved internal panels using arcs to give it a realistic volleyball look
+    # Left vertical seam curve
+    _canvas.create_arc(center_x - radius * 1.5, center_y - radius, 
+                      center_x + radius * 0.5, center_y + radius, 
+                      start=270, extent=180, style="arc", outline=_outline_color, width=_line_thickness)
+                      
+    # Right vertical seam curve
+    _canvas.create_arc(center_x - radius * 0.5, center_y - radius, 
+                      center_x + radius * 1.5, center_y + radius, 
+                      start=90, extent=180, style="arc", outline=_outline_color, width=_line_thickness)
+                      
+    # Horizontal center swooping seam curve
+    _canvas.create_arc(center_x - radius, center_y - radius * 0.5, 
+                      center_x + radius, center_y + radius * 1.5, 
+                      start=0, extent=180, style="arc", outline=_outline_color, width=_line_thickness)
+
+
+
